@@ -7,10 +7,18 @@
     box-sizing: border-box;
   }
 
-  body {
+  html, body {
+    height: 100%;
+  }
+
+
+  html, body {
     font-family: "DM Sans", sans-serif;
-    background-color: #0c0a09;
-    color: #e7e5e4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #84daff;
+    color: #000000;
     -webkit-font-smoothing: antialiased;
   }
 }
@@ -62,7 +70,9 @@
   color: #e7e5e4;
   font-family: "DM Sans", sans-serif;
   font-size: 0.9rem;
-  transition: border-color 0.2s, background 0.2s;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
   outline: none;
 }
 

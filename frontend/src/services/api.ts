@@ -90,10 +90,10 @@ export async function getProfile() {
   }
 
   console.log("👤 [GET_PROFILE] Obteniendo perfil");
-  console.log(`👤 [GET_PROFILE] Enviando GET a: ${API_URL}/profile`);
+  console.log(`👤 [GET_PROFILE] Enviando GET a: ${API_URL}/profile/me`);
 
   try {
-    let response = await fetch(`${API_URL}/profile`, {
+    let response = await fetch(`${API_URL}/profile/me`, {
       method: "GET",
       headers: getAuthHeaders(),
     });
@@ -119,10 +119,10 @@ export async function updateProfile(params: UpdateProfileParams) {
   }
 
   console.log("📝 [UPDATE_PROFILE] Actualizando perfil con:", params.userData);
-  console.log(`📝 [UPDATE_PROFILE] Enviando PUT a: ${API_URL}/profile`);
+  console.log(`📝 [UPDATE_PROFILE] Enviando PUT a: ${API_URL}/profile/me`);
 
   try {
-    let response = await fetch(`${API_URL}/profile`, {
+    let response = await fetch(`${API_URL}/profile/me`, {
       method: "PUT",
       headers: getAuthHeaders(),
       body: JSON.stringify(params.userData),
@@ -149,13 +149,13 @@ export async function deleteProfile() {
   }
 
   console.log("🗑️ [DELETE_PROFILE] Eliminando perfil");
-  console.log(`🗑️ [DELETE_PROFILE] Enviando DELETE a: ${API_URL}/profile`);
+  console.log(`🗑️ [DELETE_PROFILE] Enviando DELETE a: ${API_URL}/profile/me`);
 
   try {
     let id = await getProfile().then((profile) => profile.id);
     console.log(`🗑️ [DELETE_PROFILE] ID del usuario a eliminar: ${id}`);
 
-    let response = await fetch(`${API_URL}/profile`, {
+    let response = await fetch(`${API_URL}/profile/me`, {
       method: "DELETE",
       headers: getAuthHeaders(),
       body: JSON.stringify({ id: id }),

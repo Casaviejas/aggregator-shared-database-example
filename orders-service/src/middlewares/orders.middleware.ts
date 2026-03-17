@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
-export const valideCreateOrder = (
+export const validateCreateOrder = (
   req: Request,
   res: Response,
   next: NextFunction,

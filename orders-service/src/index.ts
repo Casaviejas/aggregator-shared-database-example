@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db";
-
+import ordersRoutes from "./routes/orders";
 import swaggerUi from "swagger-ui-express";
 import YAML from "yamljs";
 
@@ -31,6 +31,8 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.get("/health", (req, res) => {
   res.status(200).json({ message: "Server is running" });
 });
+
+app.use("/orders", ordersRoutes);
 
 // Iniciar conexión a BD
 connectDB()

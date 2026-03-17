@@ -1,4 +1,4 @@
-import { Response } from "express";
+import { Request, Response } from "express";
 import { AuthRequest } from "../middlewares/auth.middleware";
 import {
   getOrdersByUser,
@@ -9,16 +9,19 @@ import {
   UpdateOrderBody,
 } from "../services/orders.service";
 
-// GET /orders
+// GET /orders/internal/:userId
 export const getOrders = async (
-  req: AuthRequest,
-  res: Response,
+  req: Request<{ userId: string}>,
+  res: Response
 ): Promise<void> => {
   try {
-    const userId = req.user!.id;
+
+    const userId = req.params.userId;
+
     const orders = await getOrdersByUser(userId);
 
     res.status(200).json({ orders });
+
   } catch (error) {
     console.error("[getOrders]", error);
     res.status(500).json({ message: "Error interno del servidor" });

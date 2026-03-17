@@ -6,7 +6,7 @@ dotenv.config();
 const connectDB = async ():Promise<void> => {
     try {
         const mongoURI = process.env.DATABASE_URL;
-
+        console.log("URL cargada desde el env:" , mongoURI)
         if (!mongoURI) throw new Error('MongoURI is not defined');
 
         console.log("🔌 Intentando conectar a MongoDB...");

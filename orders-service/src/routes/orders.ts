@@ -13,7 +13,8 @@ import {
 
 const router = Router();
 
-router.get("/", authMiddleware, getOrders);
+router.get("/internal/:userId", getOrders);
+
 router.post("/", authMiddleware, validateCreateOrder, createOrderHandler);
 router.put("/:id", authMiddleware, validateUpdateOrder, updateOrderHandler);
 router.delete("/:id", authMiddleware, deleteOrderHandler);

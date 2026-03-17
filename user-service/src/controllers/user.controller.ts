@@ -1,11 +1,13 @@
-import { Response } from "express";
+import { Request , Response } from "express";
 import { UserModel } from "../models/user-model";
 import { AuthRequest } from "../middlewares/auth.middleware";
 
 
-export const getProfile = async (req: AuthRequest, res: Response) => {
+export const getProfile = async (
+  req: Request<{userId: string}>, 
+  res: Response) => {
   try {
-    const userId = req.user?.id;
+    const userId = req.params.userId;
 
     const user = await UserModel.findById(userId).select("-password");
 

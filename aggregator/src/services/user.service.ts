@@ -1,11 +1,12 @@
 import axios from "axios";
 
-const USER_SERVICE_URL = process.env.USER_SERVICE_URL;
+const URL = process.env.USER_SERVICE_URL;
+console.log("url cargada desde el env" , URL)
 
 export const getUserById = async (userId: string) => {
 
   const response = await axios.get(
-    `${USER_SERVICE_URL}/users/internal/${userId}`
+    `${URL}/profile/internal/${userId}`
   );
 
   return response.data;

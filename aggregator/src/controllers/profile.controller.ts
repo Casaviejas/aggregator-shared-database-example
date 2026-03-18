@@ -19,7 +19,7 @@ export const getProfile = async (req: AuthRequest, res: Response) => {
       orders = await getOrdersByUser(userId);
     } catch (error) {
       console.warn("Order service failed:", (error as Error).message);
-      
+
     }
 
     res.json({
@@ -29,11 +29,8 @@ export const getProfile = async (req: AuthRequest, res: Response) => {
     });
 
   } catch (error) {
-
-    res.status(500).json({
-      message: "Error obteniendo perfil"
-    });
-
+    res.status(500).json({ message: "Error obteniendo perfil" });
   }
+
 
 };

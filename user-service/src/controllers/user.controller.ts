@@ -1,21 +1,26 @@
 import { Request , Response } from "express";
 import { UserModel } from "../models/user-model";
 import { AuthRequest } from "../middlewares/auth.middleware";
+import mongoose from "mongoose";
 
-
-export const getProfile = async (
-  req: Request<{userId: string}>, 
-  res: Response) => {
+export const getProfile = async (req: Request<{userId: string}>, res: Response) => {
   try {
     const userId = req.params.userId;
 
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      return res.status(400).json({ message: "ID inválido" });
+    }
+
     const user = await UserModel.findById(userId).select("-password");
+
+    if (!user) {
+      return res.status(404).json({ message: "Usuario no encontrado" });
+    }
 
     res.json(user);
   } catch (error) {
-    res.status(500).json({
-      message: "Error obteniendo perfil",
-    });
+    console.error("User service error:", error);
+    res.status(500).json({ message: "Error obteniendo perfil" });
   }
 };
 

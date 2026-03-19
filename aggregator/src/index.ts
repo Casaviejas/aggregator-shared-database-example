@@ -3,10 +3,19 @@ dotenv.config();
 import swaggerUi from "swagger-ui-express";
 import YAML from "yamljs";
 import express from "express";
+import cors from "cors";
 
 import profileRoutes from "./routes/profile";
 
 const app = express();
+
+// CORS configuración - Permitir todos los orígenes en desarrollo
+app.use(cors({
+  origin: "*",
+  credentials: false,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
 
 app.use(express.json());
 

@@ -1,11 +1,9 @@
 import { Router } from "express";
-import { getProfile, updateProfile, deleteUser } from "../controllers/user.controller";
+import { getProfile } from "../controllers/profile.controller";
 import { authMiddleware } from "../middlewares/auth.middleware";
 
 const router = Router();
 
-router.get("/me", authMiddleware, getProfile);
-router.put("/me", authMiddleware, updateProfile);
-router.delete("/me", authMiddleware, deleteUser);
+router.get("/", authMiddleware, getProfile);
 
 export default router;

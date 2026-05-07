@@ -49,6 +49,7 @@ export async function register(credentials: {
 
 export async function login(credentials: { email: string; password: string }) {
   console.log("🔐 [LOGIN] Iniciando login con:", { email: credentials.email });
+  console.log("🔐 [LOGIN] Iniciando login con:", { email: credentials.password });
   console.log(`🔐 [LOGIN] Enviando POST a: ${API_URL_USER}/auth/login`);
 
   try {

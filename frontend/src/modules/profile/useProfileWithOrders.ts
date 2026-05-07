@@ -40,10 +40,10 @@ export function useProfileWithOrders() {
         const { user, orders, warnings } = data;
 
         console.log(user.name);
-        console.log(orders.orders);
+        console.log(orders);
 
         setUser(user);
-        setOrders(orders.orders);
+        setOrders(orders.orders || []);
 
         setName(user.name || "");
         setEmail(user.email || "");

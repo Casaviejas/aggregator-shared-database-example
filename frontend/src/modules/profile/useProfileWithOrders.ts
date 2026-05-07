@@ -37,7 +37,7 @@ export function useProfileWithOrders() {
         setIsLoading(true);
 
         const data = await getProfile();
-        const { user, orders, warnings } = data;
+        const { user, orders} = data;
 
         console.log(user.name);
         console.log(orders.orders);

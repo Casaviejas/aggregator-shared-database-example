@@ -48,6 +48,7 @@ export function useProfileWithOrders() {
         setName(user.name || "");
         setEmail(user.email || "");
       } catch (error) {
+        localStorage.removeItem("token");
         toast.error("Error al cargar el perfil");
         navigate("/");
       } finally {

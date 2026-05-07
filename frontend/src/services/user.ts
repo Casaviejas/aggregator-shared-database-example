@@ -10,7 +10,6 @@ export async function register(credentials: {
   console.log("📝 [REGISTER] Iniciando registro con:", {
     name: credentials.name,
     email: credentials.email,
-    password: credentials.password,
   });
   console.log(`📝 [REGISTER] Enviando POST a: ${API_URL_USER}/auth/register`);
 
@@ -49,7 +48,7 @@ export async function register(credentials: {
 }
 
 export async function login(credentials: { email: string; password: string }) {
-  console.log("🔐 [LOGIN] Iniciando login con:", { email: credentials.email, password: credentials.password });
+  console.log("🔐 [LOGIN] Iniciando login con:", { email: credentials.email });
   console.log(`🔐 [LOGIN] Enviando POST a: ${API_URL_USER}/auth/login`);
 
   try {

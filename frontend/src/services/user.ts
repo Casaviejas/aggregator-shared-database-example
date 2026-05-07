@@ -103,7 +103,7 @@ export async function getProfile() {
   console.log(`👤 [GET_PROFILE] Enviando GET a: ${API_URL_AGGREGATOR}/profile/me`);
 
   try {
-    let response = await fetch(`${API_URL_AGGREGATOR}/profile/me`, {
+    let response = await fetch(`${API_URL_AGGREGATOR}/profile`, {
       method: "GET",
       headers: getAuthHeaders(),
     });
